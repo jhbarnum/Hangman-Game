@@ -1,4 +1,5 @@
 
+
 var newArr = [];
 var underscore = [];
 var word;
@@ -8,16 +9,17 @@ var wrongGuess = "Bad Choices";
 var wins = 0;
 var checkWord;
 var yourGuessesArr = [];
-		// Array of random words for game
+    // Array of random words for game
     var hangmanWordsArr = ['cheeseburger', 'computer', 'bicycle', 'riverfront', 'stereo', 'guitar', 'mountain', 'firestarter', 'ewok', 'minivan', 'argentina', 'snowboard', 'javascript', 'lightning', 'eggnog' ];
 
-		// Press any key to get started
+    // Press any key to get started
 
-		// Begin game with initialized random word choice from array
-		function beginGame() {
+    // Begin game with initialized random word choice from array
+    function beginGame() {
+      yourGuessesArr = [];
       confirm("Do you want to play a game?");
-		 	//reset page for game start
-		 	var numberOfGuesses = 15;
+      //reset page for game start
+      var numberOfGuesses = 15;
       //resest encodedWord to correct array length at the start of each play
       encodedWord = [];
       //reset html elements at the start of each play
@@ -27,15 +29,15 @@ var yourGuessesArr = [];
       //sets word to guess at random from array
       word = hangmanWordsArr[Math.floor(Math.random() * hangmanWordsArr.length)];
       //console.log(word);
-		 	 //call functionn to convert word to undscores
+       //call functionn to convert word to undscores
        convertWord (word);
        // capture keystroke guesses
        document.onkeyup = function(event) {
        var letterGuess = String.fromCharCode(event.keyCode).toLowerCase();
 
- // Check guess array against hangmanWordarr array 	
+ // Check guess array against hangmanWordarr array  
           for (i = 0; i < word.length; i++) {
-      			//console.log(word[i]);
+            //console.log(word[i]);
             if (letterGuess === word[i]) {
               guessArr = letterGuess;
               var removed = encodedWord.splice(i, 1, word[i]);
@@ -44,22 +46,22 @@ var yourGuessesArr = [];
               
               encodedWordStr();                                                               
               }
-              else 	{ 
+              else  { 
                  document.getElementById("guesses").innerHTML = letterGuess;
                  //document.getElementById("wrongGuess").innerHTML = "Try Again";
-                   }		
+                   }    
                }
             // displays guesses in new array
             yourGuessesArr.push(letterGuess);
             document.getElementById("wrongGuess").innerHTML = yourGuessesArr;
 
 
-        		//# of guesses remaining
+            //# of guesses remaining
            numberOfGuesses = numberOfGuesses - 1;
            document.getElementById("remainingGuesses").innerHTML = numberOfGuesses;
            if (numberOfGuesses <= 0){
              document.getElementById("wrongGuess").innerHTML = "Game Over";
-    				//start over
+            //start over
            alert("game Over");
 
             }
@@ -89,7 +91,7 @@ var yourGuessesArr = [];
               }
          
         }
-           
+            
 	        	
 
 		
